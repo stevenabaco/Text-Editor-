@@ -9,11 +9,11 @@
  * Update the output text as a user types in the textarea
  * HINT: Use the onkeydown function inside HTML
  */
-function updateText() {
+updateText = () => {
   // CODE GOES HERE
   let text = document.getElementById("text-input").value;
   document.getElementById("text-output").innerText = text;
-}
+};
 
 /**
  * Toggle the bold class for the output text
@@ -22,19 +22,19 @@ function updateText() {
  * HINT: Use the classList property
  * HINT: Toggle .active class for the button
  */
-function makeBold(e) {
+makeBold = (e) => {
   //CODE GOES HERE
   e.classList.toggle("active");
   document.getElementById("text-output").classList.toggle("bold");
-}
+};
 
 /**
  * Toggle the italic class for the output text
  */
-function makeItalic(e) {
+makeItalic = (e) => {
   e.classList.toggle("active");
   document.getElementById("text-output").classList.toggle("italic");
-}
+};
 
 /**
  * Toggle the underline class for the output text
@@ -42,18 +42,18 @@ function makeItalic(e) {
  * HINT: Use the classList property
  * HINT: Use contains, remove, and add functions
  */
-function makeUnderline(e) {
+makeUnderline = (e) => {
   //CODE GOES HERE
   e.classList.toggle("active");
 
-  let text = document.getElementById("text-output");
+  let output = document.getElementById("text-output");
 
-  if (text.classList.contains("underline")) {
-    text.classList.remove("underline");
+  if (output.classList.contains("underline")) {
+    output.classList.remove("underline");
   } else {
-    text.classList.add("underline");
+    output.classList.add("underline");
   }
-}
+};
 
 /**
  * Toggle the style textAlign attribute
@@ -61,13 +61,11 @@ function makeUnderline(e) {
  * HINT: Use the style property of the element
  * HINT: Make sure to untoggle the active state for all other align buttons
  */
-function alignText(e, alignType) {
-  // CODE GOES HERE
-  e.classList.toggle("active");
+alignText = (elem, alignType) => {
   document.getElementById("text-output").style.textAlign = alignType;
-  let buttonsList = document.getElementsByClassName("align");
-  for (let i = 0; i < buttonsList.length; i++) {
-    buttonsList[i].classList.remove("active");
+  let alignButtons = document.getElementsByClassName("align");
+  for (let button of alignButtons) {
+    button.classList.remove("active");
   }
-  e.classList.add("active");
-}
+  elem.classList.toggle("active");
+};
